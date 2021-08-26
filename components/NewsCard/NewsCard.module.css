@@ -1,0 +1,13 @@
+.newsCard {
+  background-color: coral;
+  box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.3);
+}
+
+.head {
+  display: flex;
+}
+
+.postImage {
+  /* width: 151px; */
+  height: 200px;
+}
