@@ -5,8 +5,8 @@ import { NewsProvider } from "../contexts/news.context";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Navbar />
       <NewsProvider>
+        <Navbar />
         <Component {...pageProps} />
       </NewsProvider>
     </>

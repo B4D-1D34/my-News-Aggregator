@@ -4,22 +4,9 @@ import data from "../fullTestingObject";
 import { NewsContext } from "../contexts/news.context";
 import { useContext } from "react";
 
-// export const getServerSideProps = async () => {
-//   const data = await fetch(
-//     "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/TrendingNewsAPI?pageNumber=1&pageSize=10&withThumbnails=false&location=us",
-//     {
-//       method: "GET",
-//       headers: {
-//         "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-//         "x-rapidapi-key": "4bb33fe4a3msh9a44028b9da3739p19c6b6jsnaaf9f21dbad5",
-//       },
-//     }
-//   ).then((response) => response.json());
-//   return { props: { data } };
-// };
-
 const Home = () => {
-  const data = useContext(NewsContext);
+  const { news } = useContext(NewsContext);
+  const data = news;
 
   console.log(data);
   // const items = data.value;
@@ -32,7 +19,7 @@ const Home = () => {
           id={item.id}
           imgUrl={item.image.url}
           title={item.title}
-          description={item.snippet}
+          description={item.description.replace(new RegExp("<[^>]*>", "g"), "")}
           date={item.datePublished}
         />
       ))}
