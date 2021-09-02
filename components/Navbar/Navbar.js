@@ -13,6 +13,12 @@ const Navbar = () => {
   const handleSubmit = () => {
     setQuery(inputValue);
   };
+
+  const handleGetBack = () => {
+    setInputValue("");
+    setQuery("");
+  };
+
   return (
     <div className={styles.navbar}>
       <Link href="/">
@@ -21,7 +27,15 @@ const Navbar = () => {
         </a>
       </Link>
       {query ? (
-        <h1 className={styles.location}>Search results for: {query}</h1>
+        <div className={styles.locationWrapper}>
+          <Link href="/">
+            <button className={styles.navbarButton} onClick={handleGetBack}>
+              <div className={styles.arrow}>&lArr;</div>
+              <span className={styles.buttonText}>Get back</span>
+            </button>
+          </Link>
+          <h1 className={styles.location}>Search results for: {query}</h1>
+        </div>
       ) : (
         <h1 className={styles.location}>Homepage with Trending News</h1>
       )}

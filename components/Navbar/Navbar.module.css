@@ -3,12 +3,46 @@
   align-items: center;
   justify-content: space-between;
   background-image: linear-gradient(to top, black, rgb(77, 77, 77));
-  padding: 5px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 .title {
   color: white;
   text-decoration: underline;
+}
+
+.locationWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.navbarButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid white;
+  margin-right: 15px;
+  font-family: inherit;
+  color: white;
+  transition: all 0.3s;
+  padding: 0 20px;
+}
+
+.navbarButton:hover {
+  background-color: white;
+  color: black;
+}
+
+.arrow {
+  font-size: 28px;
+  font-weight: 900;
+  margin-right: 10px;
+}
+
+.buttonText {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .location {

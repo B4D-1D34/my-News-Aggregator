@@ -5,13 +5,11 @@ import { NewsContext } from "../contexts/news.context";
 import { useContext } from "react";
 
 const Home = () => {
-  const { news } = useContext(NewsContext);
+  const { isFetched, news } = useContext(NewsContext);
   const data = news;
-
+  console.log(isFetched);
   console.log(data);
-  // const items = data.value;
-  // console.log(`items`, items);
-  return data ? (
+  return isFetched ? (
     <div className={styles.container}>
       {data.value.map((item) => (
         <NewsCard

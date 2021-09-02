@@ -20,7 +20,7 @@
   transition: all 3s;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  aspect-ratio: 16 10;
+  background-color: black;
 }
 
 .text,

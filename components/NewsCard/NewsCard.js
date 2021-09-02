@@ -2,14 +2,10 @@ import styles from "./NewsCard.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import image from "../../public/logopicmock.png";
+import { countTime } from "../../utils/timeCountHelper";
 
 const NewsCard = ({ imgUrl, title, description, date, id }) => {
-  const cardDate = new Date(date);
-  const timePassed = (Date.now() - cardDate) / (24 * 60 * 60000);
-  const newsTime =
-    timePassed > 1
-      ? Math.floor(timePassed) + `d`
-      : Math.floor(timePassed * 24) + `h`;
+  const newsTime = countTime(date);
   return (
     <Link href={`/posts/${id}`}>
       <a>
