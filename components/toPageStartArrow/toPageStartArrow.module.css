@@ -1,0 +1,31 @@
+.toPageStart:hover {
+  opacity: 1;
+}
+
+.toPageStart,
+.hidden {
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  color: white;
+  border-radius: 10%;
+  font-size: 30px;
+  line-height: 0;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  transition: all 0.3s;
+}
+
+.toPageStart {
+  opacity: 0.7;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}

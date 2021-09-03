@@ -12,7 +12,7 @@ const PostPage = () => {
   let currentPost;
   let postDate;
   if (news) {
-    currentPost = news.value.find((post) => post.id === id);
+    currentPost = news.find((post) => post.id === id);
     postDate = new Date(currentPost.datePublished);
   }
 

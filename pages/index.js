@@ -3,15 +3,14 @@ import NewsCard from "../components/NewsCard/NewsCard";
 import data from "../fullTestingObject";
 import { NewsContext } from "../contexts/news.context";
 import { useContext } from "react";
+import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 
 const Home = () => {
-  const { isFetched, news } = useContext(NewsContext);
-  const data = news;
-  console.log(isFetched);
-  console.log(data);
-  return isFetched ? (
+  const { relatedSearch } = useContext(NewsContext);
+  console.log(relatedSearch);
+  return relatedSearch ? (
     <div className={styles.container}>
-      {data.value.map((item) => (
+      {relatedSearch.map((item) => (
         <NewsCard
           key={item.id}
           id={item.id}
@@ -23,7 +22,7 @@ const Home = () => {
       ))}
     </div>
   ) : (
-    <h1>Loading</h1>
+    <LoadingScreen />
   );
 };
 export default Home;

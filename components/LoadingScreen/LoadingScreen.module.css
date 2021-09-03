@@ -1,0 +1,39 @@
+.loadingScreen {
+  background-color: #333333;
+  position: absolute;
+  inset: 63px 0px 0px 0px;
+}
+.loaderWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.loader {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 40px solid;
+  animation: animloader51 1s linear infinite alternate;
+}
+
+@keyframes animloader51 {
+  0% {
+    border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 0)
+      rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+  }
+  33% {
+    border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
+      rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
+  }
+  66% {
+    border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
+      rgba(255, 255, 255, 1) rgba(255, 255, 255, 0);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 1) rgba(255, 255, 255, 1)
+      rgba(255, 255, 255, 1) rgba(255, 255, 255, 1);
+  }
+}

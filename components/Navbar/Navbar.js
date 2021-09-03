@@ -2,9 +2,10 @@ import { useContext, useState } from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 import { NewsContext } from "../../contexts/news.context";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
 const Navbar = () => {
   const [inputValue, setInputValue] = useState("");
-  const { query, setQuery } = useContext(NewsContext);
+  const { isFetched, query, setQuery } = useContext(NewsContext);
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -39,7 +40,8 @@ const Navbar = () => {
       ) : (
         <h1 className={styles.location}>Homepage with Trending News</h1>
       )}
-      <div>
+      <div className={styles.inputZone}>
+        {!isFetched && query ? <LoadingIcon /> : ""}
         <input
           type="text"
           onChange={handleChange}

@@ -48,3 +48,9 @@
 .location {
   color: white;
 }
+
+.inputZone {
+  display: flex;
+  align-items: center;
+  position: relative;
+}

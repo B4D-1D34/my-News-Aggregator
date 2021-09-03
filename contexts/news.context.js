@@ -5,7 +5,8 @@ import { specificOptions, trendingOptions } from "./apiRequests";
 export const NewsContext = createContext();
 
 export function NewsProvider(props) {
-  const [news, newsSet] = useState();
+  const [news, setNews] = useState([]);
+  const [relatedSearch, setRelatedSearch] = useState();
   const [query, setQuery] = useState("");
   const [isFetched, setIsFetched] = useState(false);
   let options;
@@ -21,7 +22,8 @@ export function NewsProvider(props) {
       const data = await axios
         .request(options)
         .then((response) => response.data);
-      newsSet(data);
+      setRelatedSearch(data.value);
+      setNews([...news, ...data.value]);
       setIsFetched(true);
       console.log("fetched!");
     }
@@ -29,7 +31,9 @@ export function NewsProvider(props) {
   }, [query]);
 
   return (
-    <NewsContext.Provider value={{ isFetched, news, query, setQuery }}>
+    <NewsContext.Provider
+      value={{ relatedSearch, isFetched, news, query, setQuery }}
+    >
       {props.children}
     </NewsContext.Provider>
   );
