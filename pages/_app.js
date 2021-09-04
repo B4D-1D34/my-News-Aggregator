@@ -1,15 +1,21 @@
 import Navbar from "../components/Navbar/Navbar";
 import "../styles/globals.css";
-import { NewsProvider } from "../contexts/news.context";
+import { NewsProvider } from "../contexts/currentNews.context";
+import { FetchingProvider } from "../contexts/isFetching.context";
+import { AllNewsProvider } from "../contexts/allNews.context";
 import ToPageStartArrow from "../components/toPageStartArrow/toPageStartArrow";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <NewsProvider>
-        <Navbar />
-        <Component {...pageProps} />
-        <ToPageStartArrow />
+        <FetchingProvider>
+          <AllNewsProvider>
+            <Navbar />
+            <Component {...pageProps} />
+            <ToPageStartArrow />
+          </AllNewsProvider>
+        </FetchingProvider>
       </NewsProvider>
     </>
   );

@@ -1,12 +1,13 @@
 import styles from "../styles/Home.module.css";
 import NewsCard from "../components/NewsCard/NewsCard";
 import data from "../fullTestingObject";
-import { NewsContext } from "../contexts/news.context";
+import { NewsContext } from "../contexts/currentNews.context";
 import { useContext } from "react";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 
 const Home = () => {
   const { relatedSearch } = useContext(NewsContext);
+
   console.log(relatedSearch);
   return relatedSearch ? (
     <div className={styles.container}>

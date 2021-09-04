@@ -4,7 +4,6 @@
 
 .toPageStart,
 .hidden {
-  visibility: visible;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +13,6 @@
   color: white;
   border-radius: 10%;
   font-size: 30px;
-  line-height: 0;
   width: 50px;
   height: 50px;
   background-color: black;
@@ -22,6 +20,7 @@
 }
 
 .toPageStart {
+  visibility: visible;
   opacity: 0.7;
 }
 

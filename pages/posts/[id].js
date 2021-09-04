@@ -1,14 +1,14 @@
-import { NewsContext } from "../../contexts/news.context";
 import { useContext } from "react";
 import { useRouter } from "next/dist/client/router";
 import styles from "./PostPage.module.css";
 import Head from "next/head";
+import { AllNewsContext } from "../../contexts/allNews.context";
 
 const PostPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { news } = useContext(NewsContext);
+  const news = useContext(AllNewsContext);
   let currentPost;
   let postDate;
   if (news) {
