@@ -1,6 +1,7 @@
 .head {
   height: 90vh;
   background-size: cover;
+  background-position: center;
   padding: 10px 0;
   background-color: black;
 }

@@ -6,7 +6,7 @@ export const AllNewsContext = createContext();
 export const AllNewsProvider = (props) => {
   const [news, setNews] = useState([]);
 
-  const { relatedSearch } = useContext(NewsContext);
+  const relatedSearch = useContext(NewsContext);
 
   useEffect(() => {
     if (relatedSearch) {

@@ -1,13 +1,15 @@
 import styles from "./SearchInput.module.css";
 import { useState, useContext } from "react";
-import { NewsContext } from "../../contexts/currentNews.context";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 import { FetchingContext } from "../../contexts/isFetching.context";
+import { SetQueryContext } from "../../contexts/query.context";
 
 const SearchInput = () => {
-  const { query, setQuery } = useContext(NewsContext);
-  const { isFetched } = useContext(FetchingContext);
+  const setQuery = useContext(SetQueryContext);
+  const isFetched = useContext(FetchingContext);
   const [inputValue, setInputValue] = useState("");
+
+  console.log("search input rend");
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -25,7 +27,7 @@ const SearchInput = () => {
 
   return (
     <div className={styles.inputZone}>
-      {!isFetched && query ? <LoadingIcon /> : ""}
+      {!isFetched && inputValue ? <LoadingIcon /> : ""}
       <input
         type="text"
         onChange={handleChange}

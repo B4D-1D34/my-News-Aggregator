@@ -1,12 +1,13 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { specificOptions, trendingOptions } from "./apiRequests";
+import { QueryContext } from "./query.context";
 
 export const NewsContext = createContext();
 
 export function NewsProvider(props) {
+  const query = useContext(QueryContext);
   const [relatedSearch, setRelatedSearch] = useState();
-  const [query, setQuery] = useState("");
   let options;
   if (query) {
     options = specificOptions(query);
@@ -27,7 +28,7 @@ export function NewsProvider(props) {
   }, [query]);
 
   return (
-    <NewsContext.Provider value={{ relatedSearch, query, setQuery }}>
+    <NewsContext.Provider value={relatedSearch}>
       {props.children}
     </NewsContext.Provider>
   );

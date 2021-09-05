@@ -6,7 +6,7 @@ import { useContext } from "react";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 
 const Home = () => {
-  const { relatedSearch } = useContext(NewsContext);
+  const relatedSearch = useContext(NewsContext);
 
   console.log(relatedSearch);
   return relatedSearch ? (

@@ -1,19 +1,22 @@
 .locationWrapper {
   display: flex;
   align-items: center;
+  flex-shrink: 1;
 }
 
 .navbarButton {
-  display: flex;
-  align-items: center;
+  /* display: flex; */
+  /* align-items: center; */
   cursor: pointer;
   background-color: transparent;
   border: 1px solid white;
+  margin-top: 4px;
   margin-right: 15px;
   font-family: inherit;
   color: white;
   transition: all 0.3s;
-  padding: 0 20px;
+  padding: 12px 20px 17px;
+  flex-shrink: 0;
 }
 
 .navbarButton:hover {
@@ -24,14 +27,47 @@
 .arrow {
   font-size: 28px;
   font-weight: 900;
-  margin-right: 10px;
+  line-height: 0%;
 }
 
-.buttonText {
-  font-size: 18px;
-  font-weight: 500;
+.query {
+  /* max-width: 40px; */
+  /* min-width: 200px; */
+  /* width: 420px; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  position: relative;
 }
 
-.location {
+.location,
+.homeLocation {
+  display: flex;
+  align-items: center;
   color: white;
+
+  flex-shrink: 1;
+}
+
+.homeLocation::after {
+  content: "Homepage with Trending News";
+}
+
+.location::before {
+  content: "Results for:";
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .location,
+  .homeLocation {
+    font-size: 25px;
+  }
+
+  .homeLocation::after {
+    content: "Homepage";
+  }
+  .location::before {
+    content: "Search:";
+  }
 }
