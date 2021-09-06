@@ -3,6 +3,8 @@ import { useContext } from "react";
 import Link from "next/link";
 import { QueryContext } from "../../contexts/query.context";
 import { useRouter } from "next/dist/client/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const SearchDestination = () => {
   const router = useRouter();
@@ -15,7 +17,7 @@ const SearchDestination = () => {
       {id ? (
         <Link href="/">
           <button className={styles.navbarButton}>
-            <div className={styles.arrow}>&lArr;</div>
+            <FontAwesomeIcon className={styles.arrow} icon={faArrowLeft} />
           </button>
         </Link>
       ) : (

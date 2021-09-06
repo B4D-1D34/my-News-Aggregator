@@ -3,6 +3,8 @@ import { useState, useContext } from "react";
 import LoadingIcon from "../LoadingIcon/LoadingIcon";
 import { FetchingContext } from "../../contexts/isFetching.context";
 import { SetQueryContext } from "../../contexts/query.context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const SearchInput = () => {
   const setQuery = useContext(SetQueryContext);
@@ -30,12 +32,19 @@ const SearchInput = () => {
       {!isFetched && inputValue ? <LoadingIcon /> : ""}
       <input
         type="text"
+        className={styles.searchInput}
         onChange={handleChange}
         onKeyDown={handleSubmitWithEnter}
         value={inputValue}
         placeholder="Search something..."
       />
-      <button onClick={handleSubmit}>Search!</button>
+      <FontAwesomeIcon
+        icon={faSearch}
+        className={styles.searchButton}
+        onClick={handleSubmit}
+      >
+        Search!
+      </FontAwesomeIcon>
     </div>
   );
 };

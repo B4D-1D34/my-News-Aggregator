@@ -1,22 +1,19 @@
 .locationWrapper {
   display: flex;
   align-items: center;
-  flex-shrink: 1;
+  width: max-content;
+  overflow: hidden;
 }
 
 .navbarButton {
-  /* display: flex; */
-  /* align-items: center; */
   cursor: pointer;
   background-color: transparent;
   border: 1px solid white;
-  margin-top: 4px;
   margin-right: 15px;
   font-family: inherit;
   color: white;
   transition: all 0.3s;
-  padding: 12px 20px 17px;
-  flex-shrink: 0;
+  padding: 5px 20px;
 }
 
 .navbarButton:hover {
@@ -25,19 +22,13 @@
 }
 
 .arrow {
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 0%;
+  width: 16px;
+  height: 16px;
+  box-sizing: content-box;
 }
 
 .query {
-  /* max-width: 40px; */
-  /* min-width: 200px; */
-  /* width: 420px; */
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  position: relative;
+  flex-shrink: 0;
 }
 
 .location,
@@ -45,16 +36,15 @@
   display: flex;
   align-items: center;
   color: white;
-
-  flex-shrink: 1;
 }
 
 .homeLocation::after {
   content: "Homepage with Trending News";
+  flex-shrink: 0;
 }
 
 .location::before {
-  content: "Results for:";
+  content: "Search:";
   flex-shrink: 0;
 }
 
@@ -67,7 +57,13 @@
   .homeLocation::after {
     content: "Homepage";
   }
+}
+
+@media screen and (max-width: 450px) {
   .location::before {
-    content: "Search:";
+    content: "";
+  }
+  .navbarButton {
+    padding: 5px 15px;
   }
 }

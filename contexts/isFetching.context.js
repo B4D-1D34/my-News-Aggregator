@@ -5,7 +5,7 @@ import { QueryContext } from "./query.context";
 export const FetchingContext = createContext();
 
 export const FetchingProvider = (props) => {
-  const [isFetched, setIsFetched] = useState(false);
+  const [isFetched, setIsFetched] = useState(true);
   const relatedSearch = useContext(NewsContext);
   const query = useContext(QueryContext);
 
