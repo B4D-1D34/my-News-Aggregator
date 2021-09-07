@@ -8,15 +8,17 @@
 .searchButton {
   color: white;
   cursor: pointer;
-  width: 16px !important;
-  height: 16px;
   padding: 10px;
   box-sizing: content-box;
 }
 .searchButton:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
+@media (hover: none) {
+  .searchButton {
+    pointer-events: none;
+  }
+}
 @media screen and (max-width: 900px) {
   .inputZone {
     margin-left: 0px;

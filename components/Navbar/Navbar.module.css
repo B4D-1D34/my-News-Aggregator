@@ -5,6 +5,8 @@
   background-image: linear-gradient(to top, black, rgb(77, 77, 77));
   padding: 10px 10px 10px 10px;
   overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
 .titleLink {

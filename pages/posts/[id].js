@@ -12,13 +12,15 @@ const PostPage = () => {
   let currentPost;
   let postDate;
   if (news) {
-    currentPost = news.find((post) => post.id === id);
-    postDate = new Date(currentPost.datePublished);
+    currentPost = news.find((post) => post.id === id) || {};
+    postDate = new Date(
+      currentPost.datePublished ? currentPost.datePublished : 0
+    );
   }
 
   const { image, title, description, body, url } = currentPost;
 
-  return currentPost ? (
+  return Object.keys(currentPost).length ? (
     <div>
       <Head>
         <title>{title}</title>
@@ -42,7 +44,12 @@ const PostPage = () => {
         </div>
       </div>
       <h2 className={styles.content}>{body}</h2>
-      <a className={styles.postLink} href={url} target="_blank">
+      <a
+        className={styles.postLink}
+        href={url}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
         Source link: {url}
       </a>
     </div>

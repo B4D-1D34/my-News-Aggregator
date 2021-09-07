@@ -1,6 +1,5 @@
 import styles from "../styles/Home.module.css";
 import NewsCard from "../components/NewsCard/NewsCard";
-import data from "../fullTestingObject";
 import { NewsContext } from "../contexts/currentNews.context";
 import { useContext } from "react";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";

@@ -42,9 +42,7 @@ const SearchInput = () => {
         icon={faSearch}
         className={styles.searchButton}
         onClick={handleSubmit}
-      >
-        Search!
-      </FontAwesomeIcon>
+      ></FontAwesomeIcon>
     </div>
   );
 };
