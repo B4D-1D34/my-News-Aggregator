@@ -11,7 +11,7 @@ const SearchInput = () => {
   const isFetched = useContext(FetchingContext);
   const [inputValue, setInputValue] = useState("");
 
-  console.log("search input rend");
+  // console.log("search input rend");
 
   const handleChange = (e) => {
     setInputValue(e.target.value);

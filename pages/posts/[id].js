@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import styles from "./PostPage.module.css";
 import Head from "next/head";
 import { AllNewsContext } from "../../contexts/allNews.context";
+import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 
 const PostPage = () => {
   const router = useRouter();
@@ -30,7 +31,7 @@ const PostPage = () => {
         style={
           image.url
             ? { backgroundImage: `url(${image.url})` }
-            : { height: "unset", backgroundColor: "thistle" }
+            : { height: "80vh", backgroundColor: "thistle" }
         }
       >
         <div className={styles.headContent}>
@@ -54,7 +55,7 @@ const PostPage = () => {
       </a>
     </div>
   ) : (
-    <h1>Loading</h1>
+    <LoadingScreen />
   );
 };
 

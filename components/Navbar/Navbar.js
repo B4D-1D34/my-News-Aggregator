@@ -7,7 +7,7 @@ import { SetQueryContext } from "../../contexts/query.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
-  console.log("navbar render");
+  // console.log("navbar render");
   const setQuery = useContext(SetQueryContext);
   const handleGetBack = () => {
     setQuery("");

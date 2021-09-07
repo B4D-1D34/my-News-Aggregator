@@ -7,7 +7,7 @@ import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 const Home = () => {
   const relatedSearch = useContext(NewsContext);
 
-  console.log(relatedSearch);
+  // console.log(relatedSearch);
   return relatedSearch ? (
     <div className={styles.container}>
       {relatedSearch.map((item) => (

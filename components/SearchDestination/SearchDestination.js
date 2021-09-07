@@ -12,7 +12,7 @@ const SearchDestination = () => {
   const { id } = router.query;
   const query = useContext(QueryContext);
 
-  console.log("search destination rendered");
+  // console.log("search destination rendered");
   return (
     <>
       <Head>

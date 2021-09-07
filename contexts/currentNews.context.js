@@ -22,7 +22,7 @@ export function NewsProvider(props) {
         .then((response) => response.data);
       setRelatedSearch(data.value);
       // console.log(data);
-      console.log("fetched!");
+      // console.log("fetched!");
     }
     fetchData();
   }, [query]);
