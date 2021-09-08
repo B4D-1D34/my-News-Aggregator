@@ -4,16 +4,23 @@ import styles from "./PostPage.module.css";
 import Head from "next/head";
 import { AllNewsContext } from "../../contexts/allNews.context";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import { PredictiveNewsContext } from "../../contexts/predictiveNews.context";
 
 const PostPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const news = useContext(AllNewsContext);
+  const predictiveNews = useContext(PredictiveNewsContext);
+  const { news, setNews } = useContext(AllNewsContext);
   let currentPost;
   let postDate;
   if (news) {
     currentPost = news.find((post) => post.id === id) || {};
+    if (predictiveNews && !Object.keys(currentPost).length) {
+      const targetPost = predictiveNews.find((post) => post.id === id) || {};
+      setNews([...news, targetPost]);
+    }
+    // console.log(news);
     postDate = new Date(
       currentPost.datePublished ? currentPost.datePublished : 0
     );

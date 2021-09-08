@@ -13,13 +13,13 @@ export const trendingOptions = {
   },
 };
 
-export const specificOptions = (query) => ({
+export const specificOptions = (query, postsCount) => ({
   method: "GET",
   url: "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI",
   params: {
     q: query,
     pageNumber: "1",
-    pageSize: "10",
+    pageSize: postsCount,
     autoCorrect: "true",
     fromPublishedDate: "null",
     toPublishedDate: "null",

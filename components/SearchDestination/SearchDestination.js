@@ -20,7 +20,7 @@ const SearchDestination = () => {
       </Head>
       <div className={styles.locationWrapper}>
         {id ? (
-          <Link href="/">
+          <Link href="/" passHref>
             <button className={styles.navbarButton}>
               <FontAwesomeIcon className={styles.arrow} icon={faArrowLeft} />
             </button>

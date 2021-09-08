@@ -5,11 +5,37 @@
   margin-left: 10px;
 }
 
+.searchDropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: max-content;
+  background-color: white;
+  box-shadow: 0px 0px 34px -16px rgba(0, 0, 0, 1);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.inputZone:hover .searchDropdown {
+  visibility: visible;
+  opacity: 1;
+  width: 100%;
+  left: 0;
+  pointer-events: auto;
+}
+
 .searchButton {
   color: white;
   cursor: pointer;
   padding: 10px;
   box-sizing: content-box;
+}
+.searchInput {
+  width: 250px;
 }
 .searchButton:hover {
   background-color: rgba(255, 255, 255, 0.1);
@@ -19,6 +45,11 @@
     pointer-events: none;
   }
 }
+@media screen and (max-width: 1200px) {
+  .searchInput {
+    width: 215px;
+  }
+}
 @media screen and (max-width: 900px) {
   .inputZone {
     margin-left: 0px;
@@ -26,7 +57,6 @@
   .searchInput {
     width: 0;
     position: relative;
-    right: -100%;
     transition: all 0.3s, width 0.3s 0.3s, opacity 0.3s 0.3s,
       margin-left 0.3s 0.3s;
     opacity: 0;
@@ -34,8 +64,7 @@
 
   .inputZone:hover .searchInput,
   .searchInput:focus {
-    width: 189px;
-    right: 0;
+    width: 166px;
     opacity: 1;
     margin-left: 10px;
   }

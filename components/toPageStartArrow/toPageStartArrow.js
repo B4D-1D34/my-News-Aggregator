@@ -1,5 +1,7 @@
 import styles from "./toPageStartArrow.module.css";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 const ToPageStartArrow = () => {
   const buttonAppear = () => {
@@ -16,7 +18,7 @@ const ToPageStartArrow = () => {
 
   return (
     <a id="toPageStart" className={styles.hidden} href="#">
-      &uArr;
+      <FontAwesomeIcon icon={faArrowUp} />
     </a>
   );
 };

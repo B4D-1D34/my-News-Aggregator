@@ -15,7 +15,7 @@ export const AllNewsProvider = (props) => {
   }, [relatedSearch]);
 
   return (
-    <AllNewsContext.Provider value={news}>
+    <AllNewsContext.Provider value={{ news, setNews }}>
       {props.children}
     </AllNewsContext.Provider>
   );
