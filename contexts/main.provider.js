@@ -17,19 +17,19 @@ const MainProvider = (props) => (
   <MainPrequeryProvider>
     <PrequeryProvider>
       <SetPrequeryProvider>
-        <PredictiveNewsProvider>
-          <MainQueryProvider>
-            <QueryProvider>
-              <SetQueryProvider>
+        <MainQueryProvider>
+          <QueryProvider>
+            <SetQueryProvider>
+              <PredictiveNewsProvider>
                 <NewsProvider>
                   <FetchingProvider>
                     <AllNewsProvider>{props.children}</AllNewsProvider>
                   </FetchingProvider>
                 </NewsProvider>
-              </SetQueryProvider>
-            </QueryProvider>
-          </MainQueryProvider>
-        </PredictiveNewsProvider>
+              </PredictiveNewsProvider>
+            </SetQueryProvider>
+          </QueryProvider>
+        </MainQueryProvider>
       </SetPrequeryProvider>
     </PrequeryProvider>
   </MainPrequeryProvider>

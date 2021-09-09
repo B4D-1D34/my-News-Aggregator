@@ -4,22 +4,17 @@ import styles from "./PostPage.module.css";
 import Head from "next/head";
 import { AllNewsContext } from "../../contexts/allNews.context";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
-import { PredictiveNewsContext } from "../../contexts/predictiveNews.context";
 
 const PostPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const predictiveNews = useContext(PredictiveNewsContext);
-  const { news, setNews } = useContext(AllNewsContext);
+  const { news } = useContext(AllNewsContext);
   let currentPost;
   let postDate;
   if (news) {
     currentPost = news.find((post) => post.id === id) || {};
-    if (predictiveNews && !Object.keys(currentPost).length) {
-      const targetPost = predictiveNews.find((post) => post.id === id) || {};
-      setNews([...news, targetPost]);
-    }
+
     // console.log(news);
     postDate = new Date(
       currentPost.datePublished ? currentPost.datePublished : 0
@@ -38,7 +33,7 @@ const PostPage = () => {
         style={
           image.url
             ? { backgroundImage: `url(${image.url})` }
-            : { height: "80vh", backgroundColor: "thistle" }
+            : { height: "75vh", backgroundColor: "thistle" }
         }
       >
         <div className={styles.headContent}>
@@ -58,7 +53,7 @@ const PostPage = () => {
         target="_blank"
         rel="noreferrer noopener"
       >
-        Source link: {url}
+        Source link
       </a>
     </div>
   ) : (

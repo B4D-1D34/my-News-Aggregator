@@ -1,0 +1,61 @@
+.inputZone {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 10px;
+}
+
+.searchDropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 0;
+  height: max-content;
+  background-color: white;
+  box-shadow: 0px 0px 34px -16px rgba(0, 0, 0, 1);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dropdownActive {
+  visibility: visible;
+  opacity: 1;
+  width: 100%;
+  left: 0;
+  pointer-events: auto;
+}
+.searchInput {
+  width: 250px;
+}
+@media screen and (max-width: 1200px) {
+  .searchInput {
+    width: 215px;
+  }
+}
+@media screen and (max-width: 900px) {
+  /* .inputZone {
+    margin-left: 0px;
+  } */
+  .searchInput {
+    width: 0;
+    position: relative;
+    transition: all 0.3s, width 0.3s 0.3s, opacity 0.3s 0.3s,
+      margin-left 0.3s 0.3s;
+    opacity: 0;
+  }
+  .inputZone:hover .searchInput,
+  .searchInput:focus {
+    width: 166px;
+    opacity: 1;
+    /* margin-left: 10px; */
+  }
+}
+@media screen and (max-width: 318px) {
+  .inputZone:hover .searchInput,
+  .searchInput:focus {
+    width: 136px;
+  }
+}

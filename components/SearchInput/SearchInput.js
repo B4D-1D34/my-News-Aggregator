@@ -1,21 +1,21 @@
+import { useState, useEffect, useContext, useRef } from "react";
 import styles from "./SearchInput.module.css";
-import { useState, useContext, useEffect } from "react";
-import LoadingIcon from "../LoadingIcon/LoadingIcon";
-import { FetchingContext } from "../../contexts/isFetching.context";
-import { SetQueryContext } from "../../contexts/query.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import SearchDropdown from "../SearchDropdown/SearchDropdown";
+import { SetQueryContext } from "../../contexts/query.context";
 import { SetPrequeryContext } from "../../contexts/preQuery.context";
 
-const SearchInput = () => {
+const SearchInput = ({ className }) => {
+  const inputRef = useRef();
+
+  const focusInput = () =>
+    inputRef.current.offsetWidth < 80 && inputRef.current.focus();
+
   const setQuery = useContext(SetQueryContext);
   const setPrequery = useContext(SetPrequeryContext);
-  const isFetched = useContext(FetchingContext);
   const [inputValue, setInputValue] = useState("");
   const [timer, setTimer] = useState(null);
 
-  // console.log("search input rend");
   useEffect(() => {
     if (timer) {
       clearTimeout(timer);
@@ -35,21 +35,22 @@ const SearchInput = () => {
   };
 
   const handleSubmit = () => {
+    if (timer) {
+      clearTimeout(timer);
+    }
     setQuery(inputValue);
   };
-
   const handleSubmitWithEnter = ({ keyCode }) => {
     if (keyCode === 13) {
       handleSubmit();
     }
   };
-
   return (
-    <div className={styles.inputZone}>
-      {!isFetched && inputValue ? <LoadingIcon /> : ""}
+    <div className={styles.searchInputWrapper} onClick={focusInput}>
       <input
+        ref={inputRef}
         type="text"
-        className={styles.searchInput}
+        className={className}
         onChange={handleChange}
         onKeyDown={handleSubmitWithEnter}
         value={inputValue}
@@ -60,9 +61,6 @@ const SearchInput = () => {
         className={styles.searchButton}
         onClick={handleSubmit}
       />
-      <div className={styles.searchDropdown}>
-        <SearchDropdown />
-      </div>
     </div>
   );
 };
