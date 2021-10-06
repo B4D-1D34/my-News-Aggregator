@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { SetQueryContext } from "../../contexts/query.context";
 import { SetPrequeryContext } from "../../contexts/preQuery.context";
+import { SetPageNumberContext } from "../../contexts/pageNumber.context";
 
 const SearchInput = ({ className }) => {
   const inputRef = useRef();
@@ -11,6 +12,7 @@ const SearchInput = ({ className }) => {
   const focusInput = () =>
     inputRef.current.offsetWidth < 80 && inputRef.current.focus();
 
+  const incrementPageNumber = useContext(SetPageNumberContext);
   const setQuery = useContext(SetQueryContext);
   const setPrequery = useContext(SetPrequeryContext);
   const [inputValue, setInputValue] = useState("");
@@ -38,6 +40,7 @@ const SearchInput = ({ className }) => {
     if (timer) {
       clearTimeout(timer);
     }
+    incrementPageNumber("reset");
     setQuery(inputValue);
   };
   const handleSubmitWithEnter = ({ keyCode }) => {

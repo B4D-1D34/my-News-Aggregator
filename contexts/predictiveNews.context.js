@@ -10,7 +10,7 @@ export function PredictiveNewsProvider(props) {
   const [predictiveNews, setPredictiveNews] = useState();
   let options;
   if (prequery) {
-    options = specificOptions(prequery, "3");
+    options = specificOptions(prequery, "7");
   }
 
   useEffect(() => {

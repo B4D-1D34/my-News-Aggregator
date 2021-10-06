@@ -12,6 +12,11 @@ import {
   SetPrequeryProvider,
 } from "./preQuery.context";
 import { PredictiveNewsProvider } from "./predictiveNews.context";
+import {
+  MainPageNumberProvider,
+  PageNumberProvider,
+  SetPageNumberProvider,
+} from "./pageNumber.context";
 
 const MainProvider = (props) => (
   <MainPrequeryProvider>
@@ -21,11 +26,17 @@ const MainProvider = (props) => (
           <QueryProvider>
             <SetQueryProvider>
               <PredictiveNewsProvider>
-                <NewsProvider>
-                  <FetchingProvider>
-                    <AllNewsProvider>{props.children}</AllNewsProvider>
-                  </FetchingProvider>
-                </NewsProvider>
+                <MainPageNumberProvider>
+                  <PageNumberProvider>
+                    <SetPageNumberProvider>
+                      <NewsProvider>
+                        <FetchingProvider>
+                          <AllNewsProvider>{props.children}</AllNewsProvider>
+                        </FetchingProvider>
+                      </NewsProvider>
+                    </SetPageNumberProvider>
+                  </PageNumberProvider>
+                </MainPageNumberProvider>
               </PredictiveNewsProvider>
             </SetQueryProvider>
           </QueryProvider>
