@@ -15,11 +15,8 @@ export function PredictiveNewsProvider(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await axios
-        .request(options)
-        .then((response) => response.data);
+      const { data } = await axios.post("api/get-news", options);
       setPredictiveNews(data.value);
-      // console.log(data);
       // console.log("fetched!");
     }
     if (options) {

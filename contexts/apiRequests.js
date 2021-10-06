@@ -9,7 +9,7 @@ export const trendingOptions = (pageNumber) => ({
   },
   headers: {
     "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-    "x-rapidapi-key": process.env.API_KEY,
+    "x-rapidapi-key": null,
   },
 });
 
@@ -26,6 +26,6 @@ export const specificOptions = (query, postsCount, pageNumber) => ({
   },
   headers: {
     "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
-    "x-rapidapi-key": process.env.API_KEY,
+    "x-rapidapi-key": null,
   },
 });

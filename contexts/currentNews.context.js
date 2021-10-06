@@ -22,12 +22,8 @@ export function NewsProvider(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await axios
-        .request(options)
-        .then((response) => response.data);
+      const { data } = await axios.post("api/get-news", options);
       setRelatedSearch(data.value);
-      console.log(process.env.SHELL);
-      // console.log(data);
       // console.log("fetched!");
       if (pathname !== "/") {
         push("/");
@@ -39,9 +35,7 @@ export function NewsProvider(props) {
   useEffect(() => {
     if (relatedSearch && pageNumber !== "1") {
       async function fetchData() {
-        const data = await axios
-          .request(options)
-          .then((response) => response.data);
+        const { data } = await axios.post("api/get-news", options);
         setRelatedSearch([...relatedSearch, ...data.value]);
         if (pathname !== "/") {
           push("/");
