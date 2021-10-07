@@ -1,13 +1,13 @@
 .container {
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(30%, 1fr));
   grid-gap: 20px;
 }
 
 @media screen and (max-width: 1200px) {
   .container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(45%, 1fr));
   }
 }
 

@@ -10,7 +10,7 @@ export const AllNewsProvider = (props) => {
 
   useEffect(() => {
     if (relatedSearch) {
-      setNews([...news, ...relatedSearch]);
+      setNews([...news, ...relatedSearch.value]);
     }
   }, [relatedSearch]);
 

@@ -12,7 +12,10 @@ export function NewsProvider(props) {
 
   const query = useContext(QueryContext);
   const pageNumber = useContext(PageNumberContext);
-  const [relatedSearch, setRelatedSearch] = useState();
+  const [relatedSearch, setRelatedSearch] = useState({
+    value: [],
+    didUMean: "",
+  });
   let options;
   if (query) {
     options = specificOptions(query, "20", pageNumber);
@@ -22,8 +25,14 @@ export function NewsProvider(props) {
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await axios.post("api/get-news", options);
-      setRelatedSearch(data.value);
+      const { data } = await axios.post("/api/get-news", options);
+      console.log(data);
+      if (!data.value.length && !data.didUMean) {
+        setRelatedSearch({ ...data, didUMean: "novaluesandnodidumeanoffers" });
+      } else {
+        setRelatedSearch(data);
+      }
+
       // console.log("fetched!");
       if (pathname !== "/") {
         push("/");
@@ -35,8 +44,8 @@ export function NewsProvider(props) {
   useEffect(() => {
     if (relatedSearch && pageNumber !== "1") {
       async function fetchData() {
-        const { data } = await axios.post("api/get-news", options);
-        setRelatedSearch([...relatedSearch, ...data.value]);
+        const { data } = await axios.post("/api/get-news", options);
+        setRelatedSearch({ value: [...relatedSearch.value, ...data.value] });
         if (pathname !== "/") {
           push("/");
         }

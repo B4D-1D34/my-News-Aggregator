@@ -6,10 +6,13 @@ import { SetQueryContext } from "../../contexts/query.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import InputZone from "../InputZone/InputZone";
+import { SetPageNumberContext } from "../../contexts/pageNumber.context";
 const Navbar = () => {
   // console.log("navbar render");
   const setQuery = useContext(SetQueryContext);
+  const incrementPageNumber = useContext(SetPageNumberContext);
   const handleGetBack = () => {
+    incrementPageNumber("reset");
     setQuery("");
   };
 
