@@ -9,7 +9,10 @@ const NoResultsScreen = ({ didUMean }) => {
     <div className={styles.noResults}>
       <h1>
         No results for your query. You can get{" "}
-        <span onClick={() => setQuery("")} className={styles.didUMean}>
+        <span
+          onClick={() => (window.location = "/")}
+          className={styles.didUMean}
+        >
           home
         </span>{" "}
         or search for something else.
@@ -19,7 +22,10 @@ const NoResultsScreen = ({ didUMean }) => {
     <div className={styles.noResults}>
       <h1>
         No results for your query. Did you mean{" "}
-        <span onClick={() => setQuery(didUMean)} className={styles.didUMean}>
+        <span
+          onClick={() => (window.location = `/?q=${didUMean}`)}
+          className={styles.didUMean}
+        >
           {didUMean}
         </span>
         ?
