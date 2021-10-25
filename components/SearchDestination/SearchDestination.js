@@ -20,14 +20,14 @@ const SearchDestination = () => {
       </Head>
       <div className={styles.locationWrapper}>
         {id ? (
-          <Link href="/" passHref>
-            <button className={styles.navbarButton}>
-              <FontAwesomeIcon className={styles.arrow} icon={faArrowLeft} />
-            </button>
-          </Link>
-        ) : (
-          ""
-        )}
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className={styles.navbarButton}
+          >
+            <FontAwesomeIcon className={styles.arrow} icon={faArrowLeft} />
+          </button>
+        ) : null}
 
         {query ? (
           <h1 className={styles.location}>

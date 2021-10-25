@@ -6,7 +6,6 @@
     "fs": false
   },
   "scripts": {
-    "fetchApiData": "node fetchTestingData.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

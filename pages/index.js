@@ -5,9 +5,49 @@ import { useContext, useEffect, useRef, useState } from "react";
 import LoadingScreen from "../components/LoadingScreen/LoadingScreen";
 import { SetPageNumberContext } from "../contexts/pageNumber.context";
 import NoResultsScreen from "../components/NoResultsScreen/NoResultsScreen";
+import axios from "axios";
+import { SetQueryContext } from "../contexts/query.context";
+import { specificOptions, trendingOptions } from "../contexts/apiRequests";
 
-const Home = () => {
-  const relatedSearch = useContext(NewsContext);
+export async function getServerSideProps(context) {
+  const { req, query } = context;
+  // console.log(query);
+  const isFirstServerCall = req?.url?.indexOf("/_next/data/") === -1;
+  if (isFirstServerCall) {
+    const { API_KEY } = process.env;
+    let options;
+    if (Object.keys(query).length) {
+      options = specificOptions(query.q, "20", "1");
+      options.headers["x-rapidapi-key"] = API_KEY;
+    } else {
+      options = trendingOptions("1");
+      options.headers["x-rapidapi-key"] = API_KEY;
+    }
+    // console.log(query);
+    const { data } = await axios.request(options);
+    return { props: { data, query } };
+  } else {
+    const data = {};
+    return { props: { data } };
+  }
+}
+
+const Home = ({ data, query }) => {
+  const { relatedSearch, setRelatedSearch } = useContext(NewsContext);
+  const setQuery = useContext(SetQueryContext);
+  // const relatedSearch = data;
+  useEffect(() => {
+    if (Object.keys(data).length) {
+      // console.log(data);
+      if (!data.value.length && !data.didUMean) {
+        setRelatedSearch({ ...data, didUMean: "novaluesandnodidumeanoffers" });
+      } else {
+        setRelatedSearch(data);
+      }
+      setQuery(query.q);
+    }
+  }, []);
+
   //last post id to avoid unnecessary api fetches
   const [lastPostId, setLastPostId] = useState(0);
   const incrementPageNumber = useContext(SetPageNumberContext);
@@ -16,7 +56,9 @@ const Home = () => {
   const loadMoreNews = (entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        incrementPageNumber();
+        if (relatedSearch.value.length < relatedSearch.totalCount) {
+          incrementPageNumber();
+        }
         observer.disconnect();
       }
     });

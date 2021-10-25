@@ -23,39 +23,44 @@ export function NewsProvider(props) {
     options = trendingOptions(pageNumber);
   }
 
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = await axios.post("/api/get-news", options);
-      console.log(data);
-      if (!data.value.length && !data.didUMean) {
-        setRelatedSearch({ ...data, didUMean: "novaluesandnodidumeanoffers" });
-      } else {
-        setRelatedSearch(data);
-      }
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const { data } = await axios.post("/api/get-news", options);
+  //     console.log(data);
+  //     if (!data.value.length && !data.didUMean) {
+  //       setRelatedSearch({ ...data, didUMean: "novaluesandnodidumeanoffers" });
+  //     } else {
+  //       setRelatedSearch(data);
+  //     }
 
-      // console.log("fetched!");
-      if (pathname !== "/") {
-        push("/");
-      }
-    }
-    fetchData();
-  }, [query]);
+  //     // console.log("fetched!");
+  //     if (pathname !== "/") {
+  //       push("/");
+  //     }
+  //   }
+  //   fetchData();
+  // }, [query]);
 
   useEffect(() => {
     if (relatedSearch && pageNumber !== "1") {
       async function fetchData() {
         const { data } = await axios.post("/api/get-news", options);
-        setRelatedSearch({ value: [...relatedSearch.value, ...data.value] });
+        setRelatedSearch({
+          value: [...relatedSearch.value, ...data.value],
+          totalCount: data.totalCount,
+        });
         if (pathname !== "/") {
           push("/");
         }
+        // console.log(data, "data");
       }
       fetchData();
+      // console.log(relatedSearch, "fetch!");
     }
   }, [pageNumber]);
 
   return (
-    <NewsContext.Provider value={relatedSearch}>
+    <NewsContext.Provider value={{ relatedSearch, setRelatedSearch }}>
       {props.children}
     </NewsContext.Provider>
   );

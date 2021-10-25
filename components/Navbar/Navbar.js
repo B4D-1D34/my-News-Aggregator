@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 import SearchDestination from "../SearchDestination/SearchDestination";
 import { useContext } from "react";
-import { SetQueryContext } from "../../contexts/query.context";
+import { QueryContext, SetQueryContext } from "../../contexts/query.context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import InputZone from "../InputZone/InputZone";
@@ -10,10 +10,14 @@ import { SetPageNumberContext } from "../../contexts/pageNumber.context";
 const Navbar = () => {
   // console.log("navbar render");
   const setQuery = useContext(SetQueryContext);
+  const query = useContext(QueryContext);
   const incrementPageNumber = useContext(SetPageNumberContext);
   const handleGetBack = () => {
-    incrementPageNumber("reset");
-    setQuery("");
+    if (query) {
+      incrementPageNumber("reset");
+      setQuery("");
+      window.location = "/";
+    }
   };
 
   return (
