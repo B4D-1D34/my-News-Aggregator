@@ -14,8 +14,10 @@ const ToPageStartArrow = () => {
     window.onscroll = buttonAppear;
   }, []);
 
+  const scrollToTop = () => window.scroll(0, 0);
+
   return (
-    <a ref={toPageStartRef} className={styles.hidden} href="#">
+    <a ref={toPageStartRef} className={styles.hidden} onClick={scrollToTop}>
       <FontAwesomeIcon icon={faArrowUp} />
     </a>
   );
